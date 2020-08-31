@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function OtherPage() {
+export default () => {
   return (
     <div>
-      Other page!
-      <Link to="/">Go back home</Link>
+      Im some other page
+      <Link to="/">Go back to home page!</Link>
     </div>
-  )
-}
-
-export default OtherPage
+  );
+};
