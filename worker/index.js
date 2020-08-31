@@ -24,4 +24,5 @@ sub.on('message', (channel, message) => {
   redisClient.hset('values', message, fib(parseInt(message)))
 })
 
+// listen to 'insert' event from express server
 sub.subscribe('insert')
