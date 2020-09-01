@@ -7,8 +7,8 @@ before_install:
   - docker build -f wwkkww/complex-server-test -f ./server/Dockerfile.dev ./server
 
 script:
-  - docker run wwkkww/complex-react-test npm run test -- --coverage
-  - docker run wwkkww/complex-server-test npm run test -- --coverage
+  - docker run -e CI=true wwkkww/complex-react-test npm run test
+  - docker run -e CI=true wwkkww/complex-server-test npm run test
 
 after_success:
   - docker build -t wwkkww/multi-client ./client
