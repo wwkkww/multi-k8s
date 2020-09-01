@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f wwkkww/complex-react-test -f ./client/Dockerfile.dev ./client
+  - docker build -f wwkkww/complex-server-test -f ./server/Dockerfile.dev ./server
+
+script:
+  - docker run wwkkww/complex-react-test npm run test -- --coverage
+  - docker run wwkkww/complex-server-test npm run test -- --coverage
+
+after_success:
+  - docker build -t wwkkww/multi-client ./client
+  - docker build -t wwkkww/multi-nginx ./nginx
+  - docker build -t wwkkww/multi-server ./server
+  - docker build -t wwkkww/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push wwkkww/multi-client
+  - docker push wwkkww/multi-nginx
+  - docker push wwkkww/multi-server
+  - docker push wwkkww/multi-worker
