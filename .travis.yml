@@ -3,8 +3,8 @@ services:
   - docker
 
 before_install:
-  - docker build -f wwkkww/complex-react-test -f ./client/Dockerfile.dev ./client
-  - docker build -f wwkkww/complex-server-test -f ./server/Dockerfile.dev ./server
+  - docker build -t wwkkww/complex-react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t wwkkww/complex-server-test -f ./server/Dockerfile.dev ./server
 
 script:
   - docker run -e CI=true wwkkww/complex-react-test npm run test
