@@ -12,9 +12,9 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Fib Calculator</h1>
-            <Link to="/">Home</Link>
-            <Link to="/otherpage">Other Page</Link>
+            <h1 className="App-title">Fibonacci Calculator</h1>
+            <Link to="/" style={{ color: '#FFF' }} >Home</Link>{"  |  "}
+            <Link to="/otherpage" style={{ color: '#FFF' }} >About</Link>
           </header>
           <div style={{ marginTop: '10px' }}>
             <Route exact path="/" component={Fib} />
